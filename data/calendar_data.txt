@@ -1,0 +1,8 @@
++-------------------+------------+--------+-------------------------------------+
+| Event             | Date       | Time   | Description                         |
++-------------------+------------+--------+-------------------------------------+
+| Birthday           | 2024-04-29 | 12:00  | Fahad's Birthday Party - Cake,candles,gift ;) |
+| Meeting with Client | 2024-04-10 | 09:00 AM | Discuss project requirements        |
+| Result             | 2024-06-18 | 06:00 AM | field RESULT                        |
+| Team Standup       | 2024-04-11 | 10:30 AM | Brief discussion on ongoing tasks   |
++-------------------+------------+--------+-------------------------------------+
