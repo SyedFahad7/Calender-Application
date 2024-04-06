@@ -1,4 +1,4 @@
-# <span style="color: #4CAF50;">📅 Calendar/Planner Application</span>
+# <span style="color: #4CAF50;">📅 Calendar/Planner Application using <span style="color: #FF5722;">C++</span></span>
 
 ## <span style="color: #2196F3;">🚀 Overview</span>
 The Calendar/Planner Application is a C++ project that allows users to schedule events, set reminders, and manage their daily tasks. It provides functionalities to add, edit, delete events, as well as saving and loading calendar data to/from a file.

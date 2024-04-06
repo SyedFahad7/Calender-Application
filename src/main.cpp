@@ -2,8 +2,9 @@
 #include <vector>
 #include <string>
 #include <fstream>
-// Main Code Starts......
-// Define the Event structure..
+#include <iomanip>
+
+// Define the Event structure
 struct Event {
     std::string name;
     std::string date;
@@ -11,13 +12,13 @@ struct Event {
     std::string description;
 };
 
-// Define the Calendar class.....
+// Define the Calendar class
 class Calendar {
 private:
     std::vector<Event> events;
 
 public:
-    //Function to add an event to the calendar..
+    // Function to add an event to the calendar
     void addEvent(const Event& event) {
         events.push_back(event);
     }
@@ -31,7 +32,7 @@ public:
         }
     }
 
-    // Function to delete an event from the calendar....
+    // Function to delete an event from the calendar
     void deleteEvent(int index) {
         if (index >= 0 && index < events.size()) {
             events.erase(events.begin() + index);
@@ -40,46 +41,38 @@ public:
         }
     }
 
-    //Function to display all events in the calendar
+    // Function to display all events in the calendar
     void displayEvents() const {
         if (events.empty()) {
             std::cout << "No events found." << std::endl;
         } else {
             for (size_t i = 0; i < events.size(); ++i) {
                 std::cout << "Event " << i + 1 << ":" << std::endl;
-                std::cout << std::endl;
-
                 std::cout << "Name: " << events[i].name << std::endl;
-                std::cout << std::endl;
-
                 std::cout << "Date: " << events[i].date << std::endl;
-                std::cout << std::endl;
-
                 std::cout << "Time: " << events[i].time << std::endl;
-                std::cout << std::endl;
-
                 std::cout << "Description: " << events[i].description << std::endl;
                 std::cout << std::endl;
-
-                std::cout << std::endl;
-                std::cout << std::endl;
-
             }
         }
     }
 
-    // Function for getting  the number of events in the calendar
+    // Function to get the number of events in the calendar
     size_t size() const {
         return events.size();
     }
 
-    //Function to save calendar data to a file..
+    //Function to save calendar data to a file ..
     void saveToFile(const std::string& filename) const {
         std::ofstream file(filename);
         if (file.is_open()) {
+            file << "+-------------------+------------+--------+-------------------------------------+" << std::endl;
+            file << "| Event             | Date       | Time   | Description                         |" << std::endl;
+            file << "+-------------------+------------+--------+-------------------------------------+" << std::endl;
             for (const auto& event : events) {
-                file << event.name << ',' << event.date << ',' << event.time << ',' << event.description << std::endl;
+                file << "| " << std::left << std::setw(18) << event.name << " | " << std::setw(10) << event.date << " | " << std::setw(6) << event.time << " | " << std::setw(35) << event.description << " |" << std::endl;
             }
+            file << "+-------------------+------------+--------+-------------------------------------+" << std::endl;
             file.close();
             std::cout << "Calendar data saved to " << filename << std::endl;
         } else {
@@ -134,28 +127,17 @@ int main() {
     do {
         std::cout << "Enter your choice: ";
         std::cin >> choice;
-        std::cout << std::endl;
-        std::cout << std::endl;
-
 
         switch (choice) {
             case 1: {
                 Event newEvent;
                 std::cout << "Enter event name: ";
-                std::cout << std::endl;
-
-                std::cin.ignore(); // helps clear input buffer
+                std::cin.ignore();
                 std::getline(std::cin, newEvent.name);
-                std::cout << std::endl;
-
                 std::cout << "Enter event date (e.g., YYYY-MM-DD): ";
                 std::getline(std::cin, newEvent.date);
-                std::cout << std::endl;
-
                 std::cout << "Enter event time (e.g., HH:MM): ";
                 std::getline(std::cin, newEvent.time);
-                std::cout << std::endl;
-
                 std::cout << "Enter event description: ";
                 std::getline(std::cin, newEvent.description);
                 calendar.addEvent(newEvent);
@@ -168,7 +150,7 @@ int main() {
                 if (index >= 1 && index <= calendar.size()) {
                     Event editedEvent;
                     std::cout << "Enter new name for the event: ";
-                    std::cin.ignore(); 
+                    std::cin.ignore();
                     std::getline(std::cin, editedEvent.name);
                     std::cout << "Enter new date for the event: ";
                     std::getline(std::cin, editedEvent.date);
