@@ -4,7 +4,8 @@
 #include <fstream>
 #include <iomanip>
 
-// Define the Event structure
+// MAIN CODE STARTS HERE (DO NOT EDIT) 
+// Define the Event structures..
 struct Event {
     std::string name;
     std::string date;
@@ -12,18 +13,18 @@ struct Event {
     std::string description;
 };
 
-// Define the Calendar class
+//the Calendar class
 class Calendar {
 private:
     std::vector<Event> events;
 
 public:
-    // Function to add an event to the calendar
+    //function to add an event to the calendar
     void addEvent(const Event& event) {
         events.push_back(event);
     }
 
-    // Function to edit an event in the calendar
+    //function to edit an event in the calendar
     void editEvent(int index, const Event& newEvent) {
         if (index >= 0 && index < events.size()) {
             events[index] = newEvent;
@@ -32,7 +33,7 @@ public:
         }
     }
 
-    // Function to delete an event from the calendar
+    //Function to delete an event from the calendar..
     void deleteEvent(int index) {
         if (index >= 0 && index < events.size()) {
             events.erase(events.begin() + index);
@@ -41,7 +42,7 @@ public:
         }
     }
 
-    // Function to display all events in the calendar
+    //Function to display all events in the calendar..
     void displayEvents() const {
         if (events.empty()) {
             std::cout << "No events found." << std::endl;
@@ -57,7 +58,7 @@ public:
         }
     }
 
-    // Function to get the number of events in the calendar
+    // get the number of events in the calendar.
     size_t size() const {
         return events.size();
     }
@@ -80,11 +81,11 @@ public:
         }
     }
 
-    // Function to load calendar data from a file
+    //load calendar data from a file.
     void loadFromFile(const std::string& filename) {
         std::ifstream file(filename);
         if (file.is_open()) {
-            events.clear(); // Clear existing events
+            events.clear();
             std::string line;
             while (std::getline(file, line)) {
                 Event event;
@@ -111,7 +112,7 @@ public:
 int main() {
     Calendar calendar;
 
-    // Load calendar data from a file (if available)
+    //Loadin calendar data from a file (if available)..
     calendar.loadFromFile("calendar_data.txt");
 
     // Display menu
